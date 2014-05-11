@@ -186,7 +186,7 @@ args = parser.parse_args()
 ###############
 
 #a = Source("http://thepiratebay.se/search/%s/0/7/0" % (urllib.quote(urllib.unquote(args.search))),
-           maxresults=args.max).getAllTorrents()
+#           maxresults=args.max).getAllTorrents()
 #a.pop(0)
 
 #b = RSS("%s - NullFluid" % (urllib.unquote(args.search)), a)
