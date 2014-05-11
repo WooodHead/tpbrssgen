@@ -71,6 +71,8 @@ class Source:
                             torrent.setTime(parse(dd).strftime("%s"))
                         except ValueError:
                             pass
+                        except TypeError:
+                            pass
 
             if link.get("class") == ["detLink"]:
                 torrent.setTitle(link.text)
