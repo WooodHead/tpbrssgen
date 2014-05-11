@@ -3,7 +3,7 @@ tpbrssgen
 
 Creates RSS-feeds for The Pirate Bay searches
 
-Example use can be found here: http://nullfluid.com/tpbrss.php?search=
+Example use can be found here: http://nullfluid.com/tpbrss.php?search=falling%20skies&max=10
 
 documentation
 =============
