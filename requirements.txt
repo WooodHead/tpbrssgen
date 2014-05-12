@@ -1,0 +1,5 @@
+beautifulsoup4==4.3.2
+lxml==3.3.5
+python-dateutil==2.2
+six==1.6.1
+wsgiref==0.1.2
