@@ -187,7 +187,7 @@ args = parser.parse_args()
 #Example Usage#
 ###############
 
-a = Source("http://thepiratebay.se/search/%s/0/7/0" % (urllib.quote(urllib.unquote(args.search))),
+a = Source("https://thepiratebay.se/search/%s/0/7/0" % (urllib.quote(urllib.unquote(args.search))),
            maxresults=args.max).getAllTorrents()
 a.pop(0)
 
