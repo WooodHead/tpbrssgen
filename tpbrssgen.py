@@ -9,6 +9,10 @@ from lxml import etree
 from dateutil.parser import parse
 
 
+class URLOpener(urllib.FancyURLopener):
+    version = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11'
+
+
 class Source:
     def __init__(self, url, maxresults=0, src=None):
         self.url = url
@@ -18,7 +22,8 @@ class Source:
         self.max = maxresults
 
     def getRawSource(self):
-        return urllib.urlopen(self.url).read()
+        src = URLOpener().open(self.url).read()
+	return src
 
     def getBsObj(self):
         if self.src is not None:
