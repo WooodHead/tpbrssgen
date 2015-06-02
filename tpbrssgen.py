@@ -8,7 +8,6 @@ import argparse
 from lxml import etree
 from dateutil.parser import parse
 
-
 class URLOpener(urllib.FancyURLopener):
     version = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; it; rv:1.8.1.11) Gecko/20071127 Firefox/2.0.0.11'
 
@@ -20,7 +19,8 @@ class Source:
         self.torrents = []
         self.tableRegex = "ULed by (.+)"
         self.max = maxresults
-
+        self.domain = re.search("(https|http)://[a-z0-9\.]+/", url).group(0)[:-1]
+        print "URL: ", url
     def getRawSource(self):
         src = URLOpener().open(self.url).read()
 	return src
@@ -63,8 +63,8 @@ class Source:
                 torrent.setHash(linkObj.split(":")[3].split("&")[0].upper())
 
             elif linkObj.startswith("/torrent/"):
-                torrent.setGUID("https://thepiratebay.se" + linkObj)
-                tpbInfoSrc = Source("https://thepiratebay.se" + linkObj)
+                torrent.setGUID(self.domain + linkObj)
+                tpbInfoSrc = Source(self.domain + linkObj)
                 for dd in tpbInfoSrc.getBsObj().find_all("dd"):
                     dd = re.sub(r'[^\x20-\x7e]', " ", str(dd))
                     if "Bytes" in str(dd):
